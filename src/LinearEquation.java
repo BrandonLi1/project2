@@ -27,7 +27,7 @@ public class LinearEquation {
 
 
     public double yIntercept() {
-        return roundedToHundredth(y1-slope()*x1);
+        return roundedToHundredth(y1-(slope()*x1));
     }
 
 
@@ -72,6 +72,8 @@ public class LinearEquation {
             if (x<0 && y>0) {
                 return "y = " + -y + "/" + -x + "x - " + -yIntercept();
             }
+
+            return "y = " + y + "/" + x + "x - " + -yIntercept();
         } else {
             if (y<0 && x<0) {
                 y=-y;
@@ -94,9 +96,21 @@ public class LinearEquation {
                     return "y = " + y/x + "x";
                 }
                 if (x<0 && y>0) {
-                    return "y = " + (y/x) + "x + " + -yIntercept();
+                    if (y==x) {
+                        return "y = x + " + yIntercept();
+                    }
+                    if ((double)y/x==-1) {
+                        return "y = -x + " + yIntercept();
+                    }
+                    return "y = " + (y/x) + "x + " + yIntercept();
                 }
-                return "y = " + (y / x) + "x + " + -yIntercept();
+                if (y==x) {
+                    return "y = x + " + yIntercept();
+                }
+                if ((double)y/x==-1) {
+                    return "y = -x " + yIntercept();
+                }
+                return "y = " + (y / x) + "x + " + yIntercept();
             }
             if (y==x) {
                 return "y = x + " + yIntercept();
@@ -113,7 +127,7 @@ public class LinearEquation {
                 return "y = " + y + "/" + x + "x";
             }
             if (x<0 && y>0) {
-                return "y = " + -y + "/" + -x + "x - " + -yIntercept();
+                return "y = " + -y + "/" + -x + "x - " + yIntercept();
             }
         }
         return "y = " + y + "/" + x + "x + " + yIntercept();
