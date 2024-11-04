@@ -27,7 +27,7 @@ public class LinearEquation {
 
 
     public double yIntercept() {
-        return roundedToHundredth(y1-(slope()*x1));
+        return roundedToHundredth(y1-((double) (y2 - y1) /(double) (x2-x1)*x1));
     }
 
 
